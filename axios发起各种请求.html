@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1" >GET</button>
+    <button id="btn2" >POST</button>
+    <button id="btn3" >axios发起GET</button>
+    <button id="btn4" >axios发起POST</button>
+    <script>
+     document.querySelector('#btn1').addEventListener('click',function() {
+    // 请求的 URL 地址
+    var url = 'http://www.liulongbin.top:3006/api/get';
+    // 要提交到服务器的数据
+    var dataObj = {location:'北京', address:'顺义'}
+    // 调用 axios.get() get
+    axios.get(url,{params:dataObj}).then(function(res) {
+     // res.data 是服务器返回的数据
+     console.log(res.data)
+     })
+    })
+     document.querySelector('#btn2').addEventListener('click',function() {
+    // 请求的 URL 地址
+    var url = 'http://www.liulongbin.top:3006/api/post';
+    // 要提交到服务器的数据
+    var dataObj = { address:'北京',location:'顺义'}
+    // 调用 axios.get() get
+    axios.post(url,dataObj).then(function(res) {
+     // res.data 是服务器返回的数据
+     console.log(res.data)
+     })
+    })
+
+    document.querySelector('#btn3').addEventListener('click',function() {
+    // 请求的 URL 地址
+    var url = 'http://www.liulongbin.top:3006/api/get';
+    // 要提交到服务器的数据
+    var dataObj = { address:'北京',location:'顺义'}
+    axios({
+        method: "GET",
+        url: url,
+        params: dataObj
+    }).then(function(res){
+         console.log(res.data);
+    })
+})
+
+document.querySelector('#btn4').addEventListener('click',function() {
+    // 请求的 URL 地址
+    var url = 'http://www.liulongbin.top:3006/api/post';
+    // 要提交到服务器的数据
+    var dataObj = { address:'北京',location:'顺义'}
+    axios({
+        method: "post",
+        url: url,
+        data: dataObj
+    }).then(function(res){
+         console.log(res.data);
+    })
+})
+    </script>
+</body>
+</html>
